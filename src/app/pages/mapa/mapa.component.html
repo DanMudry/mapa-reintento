@@ -1,1 +1,13 @@
-<p>mapa works!</p>
+<div>
+  <h1>Maps del Kuky</h1>
+  <google-map width="100%" [zoom]="8" [center]="myPosition()">
+    @for (country of arrCountries; track country.cca2) {
+
+    <map-marker
+      #miMarker="mapMarker"
+      [position]="{ lat: country.latlng[0], lng: country.latlng[1] }"
+    >
+    </map-marker
+    >}
+  </google-map>
+</div>

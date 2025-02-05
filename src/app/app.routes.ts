@@ -5,5 +5,5 @@ import { CountryViewComponent } from './pages/country-view/country-view.componen
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'mapas' },
   { path: 'mapas', component: MapaComponent },
-  { path: 'countrie/:code', component: CountryViewComponent },
+  { path: 'country/:code', component: CountryViewComponent },
 ];
