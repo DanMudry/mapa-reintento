@@ -16,8 +16,14 @@ export interface ICountry {
   subregion: string;
   languages: any;
   translations: any;
+  latlng: number[];
   landlocked: boolean;
   area: number;
   demonyms: any;
   flag: string;
+  maps: any;
+  population: number;
+  car: any;
+  timezones: string[];
+  continents: string[];
 }

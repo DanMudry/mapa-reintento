@@ -10,7 +10,7 @@ export class CountriesService {
   private baseUrl: string = 'https://restcountries.com/v3.1/region/';
 
   private httpCliente = inject(HttpClient);
-  getAll(region = 'europe'): Promise<ICountry[]> {
+  getAll(region = 'south america'): Promise<ICountry[]> {
     return lastValueFrom(
       this.httpCliente.get<ICountry[]>(`${this.baseUrl}${region}`)
     );

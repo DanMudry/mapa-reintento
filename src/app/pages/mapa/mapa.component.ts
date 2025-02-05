@@ -1,5 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { GoogleMap, MapMarker } from '@angular/google-maps';
+import { ICountry } from '../../interfaces/icountry.interface';
+import { CountriesService } from '../../services/countries.service';
 
 @Component({
   selector: 'app-mapa',
@@ -10,15 +12,22 @@ import { GoogleMap, MapMarker } from '@angular/google-maps';
 })
 export class MapaComponent {
   myPosition = signal<any>('');
-  ngOnInit(): any {
+  arrCountries: ICountry[] = [];
+  countryService = inject(CountriesService);
+  async ngOnInit() {
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position.coords.latitude);
-      console.log(position.coords.longitude);
       let center: any = new google.maps.LatLng(
         position.coords.latitude,
         position.coords.longitude
       );
       this.myPosition.set(center);
     });
+    let response = await this.countryService.getAll();
+    console.log(response);
+    this.arrCountries = response;
+  }
+
+  getPosition(latlng: any): void {
+    console.log(latlng);
   }
 }
